@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWIthForm'
+import PopupWithForm from './PopupWithForm'
 import ImagePopup from './ImagePopup';
 
 
@@ -12,8 +12,7 @@ function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
-  const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
+  const [selectedCard, setSelectedCard] = React.useState(0);
 
   //opening functions for popups
   function handleEditAvatarClick() {
@@ -30,7 +29,6 @@ function App() {
   }
 
   function handleCardClick(card) {
-    setIsImagePopupOpen(true);
     setSelectedCard(card);
   }
 
@@ -39,8 +37,7 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
-    setIsImagePopupOpen(false);
-    setSelectedCard({});
+    setSelectedCard(0);
   }
 
 
@@ -53,6 +50,7 @@ function App() {
                       title="Редактировать профиль" 
                       isOpen={isEditProfilePopupOpen}
                       onClose={closeAllPopups}
+                      submitButtonText="Сохранить"
                       children={
                         <>
                           <label className="popup__field">
@@ -84,6 +82,7 @@ function App() {
                         title="Новое место"
                         isOpen={isAddPlacePopupOpen}
                         onClose={closeAllPopups}
+                        submitButtonText="Добавить"
                         children={
                           <>
                             <label className="popup__field">
@@ -113,6 +112,7 @@ function App() {
                         title="Обновить аватар"
                         isOpen={isEditAvatarPopupOpen}
                         onClose={closeAllPopups}
+                        submitButtonText="Обновить"
                         children={
                             <label className="popup__field">
                               <input  type="url" 
@@ -126,11 +126,11 @@ function App() {
                         }/>
 
         <PopupWithForm  name="confirm"
-                        title="Вы уверены?"/>
+                        title="Вы уверены?"
+                        submitButtonText="Да"/>
 
 
-        <ImagePopup isOpen={isImagePopupOpen}
-                    onClose={closeAllPopups}
+        <ImagePopup onClose={closeAllPopups}
                     card={selectedCard}/>
 
         <Header />

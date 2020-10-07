@@ -1,3 +1,5 @@
+import { serverUrl, headers } from './utils';
+
 export class Api {
     constructor({ serverUrl, headers }) {
       this._serverUrl = serverUrl;
@@ -88,11 +90,8 @@ export class Api {
 
   
   const api = new Api({
-      serverUrl: 'https://mesto.nomoreparties.co/v1/cohort-15/',
-      headers: {
-        authorization: 'dfe63f2a-8f86-4355-ad0e-f940e143b2d0',
-        'Content-Type': 'application/json'
-      }
+      serverUrl: serverUrl,
+      headers: headers
   })
 
   export default api

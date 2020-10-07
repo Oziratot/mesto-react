@@ -3,7 +3,7 @@ import api from '../utils/api';
 import Card from './Card';
 
 
-function Main(props) {
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
 
   //initial page loading
   const [userName, setUserName] = React.useState('');
@@ -29,20 +29,20 @@ function Main(props) {
         <main className="content">
 
           <section className="profile">
-            <div className="profile__avatar-container" onClick={props.onEditAvatar}>
+            <div className="profile__avatar-container" onClick={onEditAvatar}>
               <img className="profile__avatar" src={userAvatar} alt="Фото профиля" />
             </div>
             <div className="profile__profile-info">
               <h1 className="profile__name">{userName}</h1>
 
-              <button onClick={props.onEditProfile} 
+              <button onClick={onEditProfile} 
                       type="button" 
                       className="profile__edit-btn"></button>
 
               <p className="profile__description">{userDescription}</p>
             </div>
 
-            <button onClick={props.onAddPlace} 
+            <button onClick={onAddPlace} 
                     type="button" 
                     className="profile__add-btn"></button>
 
@@ -53,7 +53,7 @@ function Main(props) {
               {cards.map((card) => (
                 <Card key={card._id} 
                       card={card} 
-                      onCardClick={props.onCardClick}/>
+                      onCardClick={onCardClick}/>
               ))}
             </ul>
           </section>

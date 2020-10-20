@@ -34,7 +34,7 @@ export class Api {
         headers: this._headers,
         body: JSON.stringify({
           name: data.name,
-          about: data.description
+          about: data.about
         })
       })
         .then(this._getResponseData);
@@ -52,7 +52,7 @@ export class Api {
         .then(this._getResponseData);
     }
   
-    setLike(cardId) {
+    /*setLike(cardId) {
       return fetch(`${this._serverUrl}cards/likes/${cardId}`, {
         method: 'PUT',
         headers: this._headers
@@ -63,6 +63,14 @@ export class Api {
     deleteLike(cardId) {
       return fetch(`${this._serverUrl}cards/likes/${cardId}`, {
         method: 'DELETE',
+        headers: this._headers
+      })
+        .then(this._getResponseData);
+    }*/
+
+    changeLikeCardStatus(cardId, isLiked) {
+      return fetch(`${this._serverUrl}cards/likes/${cardId}`, {
+        method: (isLiked ? "PUT" : "DELETE"),
         headers: this._headers
       })
         .then(this._getResponseData);

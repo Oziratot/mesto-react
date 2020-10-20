@@ -4,6 +4,8 @@
 @import url(./__like-btn/places-grid__like-btn.css);
 @import url(./__element/places-grid__element.css);
 @import url(./__delete-btn/places-grid__delete-btn.css);
+@import url(./__delete-btn/_visible/places-grid__delete-btn_visible.css);
+@import url(./__delete-btn/_hidden/places-grid__delete-btn_hidden.css);
 
 .places-grid {
   margin: 0 auto;
